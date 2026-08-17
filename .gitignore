@@ -1,0 +1,14 @@
+# ===== .NET =====
+bin/
+obj/
+*.user
+.vs/
+
+# ===== Node / React (bên trong TodoApp.fe) =====
+node_modules/
+dist/
+.vite/
+
+# ===== Chung =====
+*.log
+.env
