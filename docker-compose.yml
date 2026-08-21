@@ -1,0 +1,18 @@
+services:
+  api:
+    build:
+      context: ./TodoApp.Api
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=host.docker.internal,1433;Database=TodoAppDb;User Id=sa;Password=P@SSw0rd!;TrustServerCertificate=True"
+      Jwt__Key: "day-la-mot-chuoi-bi-mat-it-nhat-32-ky-tu-tro-len"
+      Jwt__Issuer: "TodoApp.Api"
+      Jwt__Audience: "TodoApp.Client"
+      Jwt__ExpiresInMinutes: "60"
+
+  fe:
+    build:
+      context: ./TodoApp.fe
+    ports:
+      - "8080:80"
+    depends_on:
+      - api

@@ -1,8 +1,18 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-   ignored: ['**/.vs/**'],
+    plugins: [react()],
+    server: {
+        watch: {
+            ignored: ['**/.vs/**'],
+        },
+        proxy: {
+            '/api': {
+                target: 'https://localhost:7061',
+                changeOrigin: true,
+                secure: false,
+            },
+        },
+    },
 })

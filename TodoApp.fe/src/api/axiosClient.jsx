@@ -1,10 +1,9 @@
 ﻿import axios from "axios";
 
 const axiosClient = axios.create({
-    baseURL: "https://localhost:7061/api",
+    baseURL: "/api", // không hardcode localhost/IP nữa
 });
 
-// Interceptor: tự động gắn JWT token vào header mọi request (nếu có)
 axiosClient.interceptors.request.use((config) => {
     const token = localStorage.getItem("token");
     if (token) {
